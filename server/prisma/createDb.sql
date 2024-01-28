@@ -10,3 +10,4 @@ drop database if exists react_nestjs;
 create database react_nestjs;
 drop role if exists reactnest;
 create role reactnest with login password '12345';
+grant all privileges on database react_nestjs to reactnest;

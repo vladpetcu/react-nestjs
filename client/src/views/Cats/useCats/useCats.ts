@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CatsApi } from "../../../api/api";
-import { Cat } from "../../../types";
+import { Cat } from "@react-nestjs/common";
 
 export const useCats = () => {
   const [cats, setCats] = useState<Cat[]>([]);

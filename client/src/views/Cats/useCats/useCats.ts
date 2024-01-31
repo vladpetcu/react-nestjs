@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { api } from "../../../api";
+import { CatsApi } from "../../../api/api";
 import { Cat } from "../../../types";
 
 export const useCats = () => {
@@ -7,7 +7,7 @@ export const useCats = () => {
 
   const loadCats = async () => {
     try {
-      const newCats = await api.getCats();
+      const newCats = await CatsApi.getAll();
       setCats(() => [...newCats]);
     } catch (error: any) {
       console.error(error);

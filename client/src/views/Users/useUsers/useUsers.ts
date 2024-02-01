@@ -6,8 +6,12 @@ export const useUsers = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   const createUser = async (createUserDto: CreateUserDto) => {
-    const newUser = await UsersApi.create(createUserDto);
-    setUsers((prevUsers) => [...prevUsers, newUser]);
+    try {
+      const newUser = await UsersApi.create(createUserDto);
+      setUsers((prevUsers) => [...prevUsers, newUser]);
+    } catch (error: any) {
+      console.error(error);
+    }
   };
 
   const loadUsers = async () => {

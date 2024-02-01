@@ -3,13 +3,19 @@ import React, { useEffect } from "react";
 import { useUsers } from "./useUsers/useUsers";
 import { CreateUserDto } from "@react-nestjs/common";
 import { useForm } from "react-hook-form";
+import { classValidatorResolver } from "@hookform/resolvers/class-validator";
+
+const createUserResolver = classValidatorResolver(CreateUserDto);
 
 export const Users = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateUserDto>({ shouldFocusError: false });
+  } = useForm<CreateUserDto>({
+    resolver: createUserResolver, // Validate form data before submitting
+    shouldFocusError: false,
+  });
   const { users, createUser, loadUsers } = useUsers();
 
   useEffect(() => {
@@ -23,9 +29,9 @@ export const Users = () => {
       <div>
         <form onSubmit={handleSubmit(createUser)}>
           <input {...register("name", { required: true })} />
-          {errors.name && <p>Name is required.</p>}
+          {errors.name && <p>Name is required, min chars 4.</p>}
           <input {...register("email", { required: true })} />
-          {errors.email && <p>Email is required.</p>}
+          {errors.email && <p>Email is required, valid format.</p>}
           <input type="submit" />
         </form>
       </div>

@@ -1,19 +1,23 @@
-## Setup server
+## Description
 
+[React](https://react.dev/)  
+[Nest](https://github.com/nestjs/nest)  
+[PostgreSQL](https://www.postgresql.org/) - [Prisma ORM](https://www.prisma.io/)
+
+## Installation
+
+```bash
+$ npm install           # install deps
+$ npm run db:create     # this must be run once
+$ npm run db:migrate    # this must be run on every DB upgrade
+$ npm run build         # build project
 ```
-cd server/
-```
 
-### Setup your local DB
+## Running the app
 
-Create the db
+```bash
+# locally
+$ npm run server:dev
+$ npm run client:start
 
-```
-psql -h localhost -p 5432 -f prisma/createDb.sql -U postgres -d postgres
-```
-
-Run migrations
-
-```
-npx prisma db push
 ```

@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 
 export const Users = () => {
   const {
-    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -24,9 +23,9 @@ export const Users = () => {
       <div>
         <form onSubmit={handleSubmit(createUser)}>
           <input {...register("name", { required: true })} />
-          {errors.name && <p>Last name is required.</p>}
+          {errors.name && <p>Name is required.</p>}
           <input {...register("email", { required: true })} />
-          {errors.email && <p>Please enter number for age.</p>}
+          {errors.email && <p>Email is required.</p>}
           <input type="submit" />
         </form>
       </div>

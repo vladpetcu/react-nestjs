@@ -4,6 +4,8 @@ import { useUsers } from "./useUsers/useUsers";
 import { CreateUserDto } from "@react-nestjs/common";
 import { useForm } from "react-hook-form";
 import { classValidatorResolver } from "@hookform/resolvers/class-validator";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const createUserResolver = classValidatorResolver(CreateUserDto);
 
@@ -28,11 +30,23 @@ export const Users = () => {
       <div>Users</div>
       <div>
         <form onSubmit={handleSubmit(createUser)}>
-          <input {...register("name", { required: true })} />
-          {errors.name && <p>Name is required, min chars 4.</p>}
-          <input {...register("email", { required: true })} />
-          {errors.email && <p>Email is required, valid format.</p>}
-          <input type="submit" />
+          <TextField
+            label="Name"
+            variant="outlined"
+            {...register("name", { required: true })}
+            error={Boolean(errors.name)}
+            helperText={errors.name && "Name is required, min chars 4"}
+          />
+          <TextField
+            label="Email"
+            variant="outlined"
+            {...register("email", { required: true })}
+            error={Boolean(errors.email)}
+            helperText={errors.email && "Email is required, valid format"}
+          />
+          <Button variant="contained" type="submit">
+            Create User
+          </Button>
         </form>
       </div>
       {!users.length ? (

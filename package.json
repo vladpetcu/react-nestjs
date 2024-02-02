@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "description": "React - Nest starter",
   "scripts": {
-    "db:create": "psql -h localhost -p 5432 -f prisma/createDb.sql -U postgres -d postgres",
+    "db:create": "npm run -w @react-nestjs/server db:create",
     "db:update": "npm run -w @react-nestjs/server db:update",
     "build:common": "npm run -w @react-nestjs/common build",
     "build": "npm run build:common && npm run -w @react-nestjs/client build -w @react-nestjs/server build",

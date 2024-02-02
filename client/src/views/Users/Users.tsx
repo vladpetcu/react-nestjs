@@ -27,26 +27,28 @@ export const Users = () => {
 
   return (
     <div>
-      <div>Users</div>
+      <div className="text-green-600">Users</div>
       <div>
         <form onSubmit={handleSubmit(createUser)}>
-          <TextField
-            label="Name"
-            variant="outlined"
-            {...register("name", { required: true })}
-            error={Boolean(errors.name)}
-            helperText={errors.name && "Name is required, min chars 4"}
-          />
-          <TextField
-            label="Email"
-            variant="outlined"
-            {...register("email", { required: true })}
-            error={Boolean(errors.email)}
-            helperText={errors.email && "Email is required, valid format"}
-          />
-          <Button variant="contained" type="submit">
-            Create User
-          </Button>
+          <div className="flex flex-col justify-center gap-1.5">
+            <TextField
+              label="Name"
+              variant="outlined"
+              {...register("name", { required: true })}
+              error={Boolean(errors.name)}
+              helperText={errors.name && "Name is required, min chars 4"}
+            />
+            <TextField
+              label="Email"
+              variant="outlined"
+              {...register("email", { required: true })}
+              error={Boolean(errors.email)}
+              helperText={errors.email && "Email is required, valid format"}
+            />
+            <Button className="max-w-fit" variant="contained" type="submit">
+              Create User
+            </Button>
+          </div>
         </form>
       </div>
       {!users.length ? (

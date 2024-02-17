@@ -1,4 +1,4 @@
-## Description
+## React-NestJs Starter
 
 [React](https://react.dev/)  
 [Nest](https://github.com/nestjs/nest)  
@@ -9,7 +9,8 @@
 ```bash
 $ npm install           # install deps
 $ npm run db:create     # this must be run once
-$ npm run db:update    # this must be run on every DB upgrade
+$ npm run db:migrate    # this must be run on every DB upgrade
+$ npm run db:seed       # this must be run on every DB seed
 $ npm run build         # build project
 ```
 
@@ -18,6 +19,6 @@ $ npm run build         # build project
 ```bash
 # locally
 $ npm run server:dev
-$ npm run client:start
+$ npm run client:dev
 
 ```

@@ -1,5 +1,7 @@
 {
   "name": "react-nestjs",
+  "author": "Vlad Petcu",
+  "license": "MIT",
   "workspaces": [
     "common",
     "server",
@@ -9,12 +11,11 @@
   "description": "React - Nest starter",
   "scripts": {
     "db:create": "npm run -w @react-nestjs/server db:create",
-    "db:update": "npm run -w @react-nestjs/server db:update",
+    "db:migrate": "npm run -w @react-nestjs/server db:migrate",
+    "db:seed": "npm run -w @react-nestjs/server db:seed",
     "build:common": "npm run -w @react-nestjs/common build",
     "build": "npm run build:common && npm run -w @react-nestjs/client build -w @react-nestjs/server build",
     "server:dev": "npm run -w @react-nestjs/server start:dev -w @react-nestjs/client start:dev",
     "client:dev": "npm run -w @react-nestjs/client start:dev"
-  },
-  "author": "Vlad Petcu",
-  "license": "ISC"
+  }
 }

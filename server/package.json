@@ -1,14 +1,12 @@
 {
   "name": "@react-nestjs/server",
   "version": "1.0.0",
-  "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "description": "Server app",
   "scripts": {
     "build": "nest build",
     "db:create": "psql -h localhost -p 5432 -f prisma/createDb.sql -U postgres -d postgres",
-    "db:update": "npx prisma db push",
+    "db:migrate": "npx prisma db push",
+    "db:seed": "ts-node prisma/seed.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

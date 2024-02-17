@@ -14,22 +14,28 @@ export const Users = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<CreateUserDto>({
     resolver: createUserResolver, // Validate form data before submitting
     shouldFocusError: false,
   });
-  const { users, createUser, loadUsers } = useUsers();
+  const { users, loading, createUser, loadUsers } = useUsers();
 
   useEffect(() => {
     loadUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onCreate = async (createUserDto: CreateUserDto) => {
+    await createUser(createUserDto);
+    reset();
+  };
+
   return (
     <div>
       <div className="text-green-600">Users</div>
       <div>
-        <form onSubmit={handleSubmit(createUser)}>
+        <form onSubmit={handleSubmit(onCreate)}>
           <div className="flex flex-col justify-center gap-1.5">
             <TextField
               label="Name"
@@ -45,13 +51,18 @@ export const Users = () => {
               error={Boolean(errors.email)}
               helperText={errors.email && "Email is required, valid format"}
             />
-            <Button className="max-w-fit" variant="contained" type="submit">
+            <Button
+              className="max-w-fit"
+              variant="contained"
+              type="submit"
+              disabled={loading}
+            >
               Create User
             </Button>
           </div>
         </form>
       </div>
-      {!users.length ? (
+      {loading ? (
         <div>Loading...</div>
       ) : (
         <table>

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useCats } from "./useCats/useCats";
 
 export const Cats = () => {
-  const { cats, loadCats } = useCats();
+  const { cats, loading, loadCats } = useCats();
 
   useEffect(() => {
     loadCats();
@@ -13,7 +13,7 @@ export const Cats = () => {
   return (
     <div>
       <div>Cats</div>
-      {!cats.length ? (
+      {loading ? (
         <div>Loading...</div>
       ) : (
         <table>

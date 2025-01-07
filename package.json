@@ -15,7 +15,7 @@
     "db:seed": "npm run -w @react-nestjs/server db:seed",
     "build:common": "npm run -w @react-nestjs/common build",
     "build": "npm run build:common && npm run -w @react-nestjs/client build -w @react-nestjs/server build",
-    "server:dev": "npm run -w @react-nestjs/server start:dev -w @react-nestjs/client start:dev",
+    "server:dev": "npm run -w @react-nestjs/server start:dev",
     "client:dev": "npm run -w @react-nestjs/client start:dev"
   }
 }

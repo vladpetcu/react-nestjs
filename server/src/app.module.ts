@@ -8,9 +8,11 @@ import { UsersController } from './api/users/users.controller';
 import { UsersService } from './api/users/users.service';
 import { UsersModule } from './api/users/users.module';
 import { CatsModule } from './api/cats/cats.module';
+import { ConfigModule } from '@nestjs/config';
+import { config } from './config/config'
 
 @Module({
-  imports: [CatsModule, UsersModule],
+  imports: [ConfigModule.forRoot({ load: [config] }), CatsModule, UsersModule],
   controllers: [AppController, CatsController, UsersController],
   providers: [AppService, CatsService, PrismaClientService, UsersService],
   exports: [],

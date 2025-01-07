@@ -19,5 +19,5 @@ drop role if exists $DB_USER;
 " -c "
 create role $DB_USER with login password '$DB_PASSWORD';
 " -c "
-grant all privileges on database $DB_NAME to $DB_USER;
+alter database $DB_NAME owner to $DB_USER;
 "
